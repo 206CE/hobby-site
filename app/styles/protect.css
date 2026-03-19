@@ -1,0 +1,89 @@
+/* --- PROTECTING Theme (Primal Guardian / Fortress / Defender / Unyielding Shield) --- */
+
+/* LIGHT MODE (Base Theme) */
+[data-theme='protect'] {
+  --bg-primary:      #f2ede5;      /* sun-bleached stone / old parchment wall */
+  --bg-secondary:    #e0d6c5;      /* weathered sandstone / fortified clay */
+  --surface:         #fdfaf4;      /* pale limestone / shield face */
+  --border:          #8a6f4f;      /* rusted iron / ancient bronze edge */
+
+  --text-primary:    #1f1a14;      /* deep charcoal / shadowed guardian */
+  --text-secondary:  #3f3326;      /* dark oak / forge soot */
+  --text-muted:      #756854;      /* aged bronze / muted earth */
+
+  --accent:          #a6784a;      /* core guardian bronze / hearth glow */
+  --accent-earth:    #8a5f3a;      /* deep territorial clay */
+  --accent-shield:   #c89f5e;      /* warm metallic shield highlight */
+  --accent-blood:    #6b2e1e;      /* subtle defended life / crimson oath */
+  --accent-stone:    #d9c7a8;      /* pale stone / unyielding highlight */
+
+  --shadow-hard:     4px 4px 0 #b89e7a;
+  --shadow-soft:     0 10px 28px rgba(138, 111, 79, 0.20);
+}
+
+/* DARK MODE */
+[data-theme='protect'][data-mode='dark'] {
+  --bg-primary:      #16120d;      /* midnight fortress stone / deep cavern guard */
+  --bg-secondary:    #241e18;      /* shadowed rampart / cooled forge */
+  --surface:         #332c24;      /* dark granite / battle-worn shield */
+  --border:          #5f4a36;      /* muted bronze rim / iron patina */
+
+  --text-primary:    #f0e8d8;      /* pale torchlight on stone */
+  --text-secondary:  #d2c0a8;      /* warm ember glow */
+  --text-muted:      #a89b7f;      /* faded sentinel gray-brown */
+
+  --accent:          #b88a58;      /* glowing bronze in low light */
+  --accent-earth:    #9a6f44;      
+  --accent-shield:   #d4b37c;      /* metallic guardian glint */
+  --accent-blood:    #8b3a28;      
+  --accent-stone:    #e8d9c0;      
+
+  --shadow-hard:     5px 5px 0 #0f0b07;
+  --shadow-soft:     0 8px 24px rgba(0,0,0,0.70);
+}
+
+/* ── Theme-specific classes ── */
+[data-theme='protect'] {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .heading {
+    @apply text-shadow-(--shadow-hard) text-(--accent-earth) text-6xl md:text-9xl font-black tracking-tighter uppercase mb-6;
+    /* Solid, enduring gradient — forged metal / stone strength */
+    background: linear-gradient(to bottom, var(--accent-shield), var(--accent-earth), var(--accent-shield));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card {
+    background-color: var(--surface);
+    border: 3px solid var(--border);  /* Slightly thicker for fortress feel */
+    @apply p-6;
+    border-radius: 4px 10px 4px 10px;   /* Blocky, shield-like asymmetry */
+    box-shadow: var(--shadow-soft);
+    transition: all 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px) scale(1.01);  /* Minimal lift — immovable but vigilant */
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+    border-color: var(--accent-shield);
+  }
+
+  .btn-primal {
+    background: linear-gradient(135deg, var(--accent-shield), var(--accent-earth));
+    color: var(--accent-stone);
+    @apply py-3 px-7 font-bold border-none rounded-[4px] transition-all duration-200;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    border: 1px solid var(--accent-blood);  /* Subtle defensive rim */
+  }
+
+  .btn-primal:hover {
+    background: linear-gradient(135deg, var(--accent-earth), var(--accent-shield));
+    transform: scale(1.03);
+    box-shadow: 0 0 24px rgba(200, 159, 94, 0.35);  /* Warm shield glow */
+  }
+}

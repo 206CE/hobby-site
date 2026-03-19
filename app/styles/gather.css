@@ -1,0 +1,87 @@
+/* --- GATHERING Theme (Primal Foraging / Abundance / Earth-Growth) --- */
+
+/* LIGHT MODE (Base Theme) */
+[data-theme='gather'] {
+  --bg-primary:      #f5f0e8;      /* sun-warmed loam / pale moss paper */
+  --bg-secondary:    #e8e0d0;      /* dried meadow clay / old parchment */
+  --surface:         #faf8f2;      /* light birch bark / fresh linen */
+  --border:          #a68f6e;      /* aged root / hazelnut shell */
+
+  --text-primary:    #1e2a1a;      /* deep forest shadow / dark moss */
+  --text-secondary:  #3a4a32;      /* pine needle / weathered oak */
+  --text-muted:      #6b8c5f;      /* sage leaf / lichen */
+
+  --accent:          #4a7043;      /* main gathering green (fern/moss) */
+  --accent-earth:    #6b8c5f;      /* sage / dried herb */
+  --accent-growth:   #8aa870;      /* fresh sprout / young leaf glow */
+  --accent-berry:    #5c2e48;      /* subtle wild berry / deep plum accent */
+  --accent-seed:     #d9c9a8;      /* golden pollen / ripe grain highlight */
+
+  --shadow-hard:     3px 3px 0 #b8a98c;
+  --shadow-soft:     0 8px 24px rgba(74, 112, 67, 0.14);
+}
+
+/* DARK MODE */
+[data-theme='gather'][data-mode='dark'] {
+  --bg-primary:      #131a12;      /* deep forest floor at dusk */
+  --bg-secondary:    #1e2a1c;      /* shadowed undergrowth */
+  --surface:         #2b3828;      /* dark mossy bark */
+  --border:          #4a5f44;      /* muted fern edge */
+
+  --text-primary:    #e8f0e0;      /* pale moonlight on leaves */
+  --text-secondary:  #c8d8c0;      /* silvered sage */
+  --text-muted:      #9ab28f;      /* faded lichen */
+
+  --accent:          #5a8a52;      /* glowing moss in low light */
+  --accent-earth:    #7a9c70;      
+  --accent-growth:   #9cc68a;      /* subtle bioluminescent sprout hint */
+  --accent-berry:    #7a3e5c;      
+  --accent-seed:     #e8d9b8;      
+
+  --shadow-hard:     4px 4px 0 #0f140c;
+  --shadow-soft:     0 6px 20px rgba(0,0,0,0.62);
+}
+
+/* ── Theme-specific classes ── */
+[data-theme='gather'] {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  .heading {
+    @apply text-shadow-(--shadow-hard) text-(--accent-earth) text-6xl md:text-9xl font-black tracking-tighter uppercase mb-6;
+    /* Soft gradient for organic / glowing feel */
+    background: linear-gradient(to right, #f0f7eb, #d4e4cc, #f0f7eb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card {
+    background-color: var(--surface);
+    border: 2px solid var(--border);
+    @apply p-6;
+    border-radius: 12px 6px 12px 6px;   /* softer, more rounded primal edges vs hunt */
+    box-shadow: var(--shadow-soft);
+    transition: all 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px) rotate(-0.6deg);  /* gentle lift, less aggressive than hunt */
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+    border-color: var(--accent-growth);
+  }
+
+  .btn-primal {
+    background: linear-gradient(135deg, var(--accent-growth), var(--accent-earth));
+    color: var(--accent-seed);
+    @apply py-3 px-7 font-bold border-none rounded-[4px] transition-all duration-200;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.45);
+  }
+
+  .btn-primal:hover {
+    background: linear-gradient(135deg, var(--accent-earth), var(--accent-growth));
+    transform: scale(1.04) translateY(-2px);
+  }
+}
