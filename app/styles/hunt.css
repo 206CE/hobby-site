@@ -1,66 +1,65 @@
-/* app/styles/hunt.css */
+/* /styles/hunt.css */
 
-/* --- LIGHT MODE --- */
-[data-theme='hunt'] {
-  --bg-primary: #f8f1e6;      /* parchment */
-  --bg-secondary: #e9d9c2;    /* clay */
-  --surface: #fff8ee;
-  --border: #c9a875;
-  --text-primary: #3a2a1f;    /* earth */
-  --text-secondary: #4a3524;
-  --text-muted: #7a5e44;
-  --accent: #8b2d1e;          /* blood */
-  
-  --shadow-hard: 3px 3px 0 #d4b68a;
+[data-theme="hunt"] {
+  /* Day Mode: High-contrast Paper & Ink */
+  --bg-hunt: oklch(0.98 0.01 80);
+  --text-900: oklch(0.15 0 0); /* Deepest Black */
+  --text-400: oklch(0.25 0.01 80); /* Primary Text */
+  --text-300: oklch(0.45 0 0); /* Subtitles */
+  --text-100: oklch(0.6 0 0); /* Muted details */
+  --border: oklch(0.2 0 0 / 0.1); /* Thin technical lines */
+  --accent: oklch(0.45 0.05 145); /* Forest Green (Technical accent) */
+
+  background-color: var(--bg-hunt);
+  color: var(--text-400);
+  font-family: "Inter", system-ui, sans-serif;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
 
-/* --- DARK MODE --- */
-[data-theme='hunt'][data-mode='dark'] {
-  --bg-primary: #1a140f;      /* shadow */
-  --bg-secondary: #2e4a2e;    /* moss */
-  --surface: #3a2a1f;
-  --border: #8b2d1e;
-  --text-primary: #d4c4a8;    /* bone */
-  --text-secondary: #a89a84;
-  --text-muted: #7a5e44;
-  --accent: #e07a30;          /* fire/glow */
+/* Night Mode: Low-light Thermal */
+[data-theme="hunt"][data-mode="dark"] {
+  --bg-hunt: oklch(0.12 0.01 145); /* Deepest Everglade */
+  --text-900: oklch(0.98 0 0);
+  --text-400: oklch(0.9 0.02 145); /* Off-white Moss */
+  --text-300: oklch(0.75 0.03 145);
+  --text-100: oklch(0.5 0.05 145);
+  --border: oklch(1 0 0 / 0.15);
+  --accent: oklch(0.85 0.12 145); /* Glowing Sage */
 }
 
-/* --- SHARED CUSTOM CLASSES --- */
-[data-theme='hunt'] {
-  .heading {
-    text-shadow: var(--shadow-hard);
-    font-family: "Georgia", serif;
-  }
+/* Minimalist Components */
+[data-theme="hunt"] .hunt-card {
+  border: 1px solid var(--border);
+  padding: 2rem;
+  background: transparent;
+  border-radius: 0px; /* Crucial for Minimalist vibe */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  .btn-primal {
-    background: var(--accent);
-    color: var(--bg-primary);
-    padding: 1rem 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border: 2px solid var(--text-primary);
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
+[data-theme="hunt"] .hunt-card:hover {
+  background: var(--text-400);
+  color: var(--bg-hunt);
+}
 
-  .btn-primal:hover {
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
+[data-theme="hunt"] .btn-primal {
+  border: 1px solid var(--text-400);
+  padding: 0.75rem 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: var(--text-400);
+}
 
-  /* Your "Tools" Card Style from the old file */
-  .hunt-card {
-    background: var(--bg-secondary);
-    border: 4px solid var(--border);
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
+[data-theme="hunt"] .btn-primal:hover {
+  background: var(--text-400);
+  color: var(--bg-hunt);
+}
 
-  .hunt-card:hover {
-    transform: perspective(1000px) rotateY(10deg);
-    border-color: var(--accent);
-  }
+/* Layout Utilities */
+[data-theme="hunt"] .border-t {
+  border-color: var(--border) !important;
 }

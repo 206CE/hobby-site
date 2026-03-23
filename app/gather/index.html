@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATHER • The Abundance Ritual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@400;600&amp;display=swap');
+        .gather-font { font-family: 'Playfair Display', serif; }
+        body { background: linear-gradient(180deg, #052e16 0%, #14532d 100%); }
+        .berry { animation: float 6s infinite ease-in-out; }
+    </style>
+</head>
+<body class="bg-emerald-950 text-emerald-100 font-sans">
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-emerald-900/80 backdrop-blur-md border-b border-emerald-700">
+        <div class="max-w-6xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-4xl">🌿</span>
+                <span class="text-4xl gather-font text-emerald-400 tracking-tighter">GATHER</span>
+            </div>
+            <div class="flex gap-10 text-sm uppercase font-medium">
+                <a href="#" class="hover:text-emerald-400 transition">FORAGE</a>
+                <a href="#" class="hover:text-emerald-400 transition">STORE</a>
+                <a href="#" class="hover:text-emerald-400 transition">SHARE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+        <div class="flex gap-12 mb-12">
+            <div class="text-8xl berry">🍓</div>
+            <div class="text-8xl berry" style="animation-delay: 2s;">🍄</div>
+            <div class="text-8xl berry" style="animation-delay: 4s;">🌰</div>
+        </div>
+        <h1 class="text-[13vw] leading-none gather-font text-emerald-300 tracking-[-0.05em]">GATHER</h1>
+        <p class="text-5xl text-emerald-400 mt-3 font-light">WHAT THE EARTH GIVES • WHAT YOU KEEP</p>
+        
+        <button onclick="harvest()" 
+                class="mt-16 px-14 py-7 bg-emerald-700 hover:bg-emerald-600 text-white text-2xl font-medium rounded-3xl border-4 border-emerald-900 transition-all">
+            FILL YOUR BASKET →
+        </button>
+    </div>
+
+    <!-- EXPANSION -->
+    <div class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+                <h2 class="gather-font text-6xl text-emerald-400 mb-8">THE RITUAL OF ABUNDANCE</h2>
+                <div class="space-y-8 text-xl">
+                    <p>Gathering is the feminine counterpart to the hunt. It is patience turned into plenty. It is noticing the tiny mushrooms others trample, the wild berries hidden in thorns.</p>
+                    <p>In 2026 we gather knowledge, networks, skills, energy. The one who gathers wisely never starves when winter comes.</p>
+                </div>
+            </div>
+            
+            <div class="bg-emerald-900/50 rounded-3xl p-10 border border-emerald-700">
+                <h3 class="uppercase text-emerald-300 text-sm mb-6 tracking-widest">YOUR GATHERING GRID</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">📚</div>
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">👥</div>
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">💰</div>
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">🧠</div>
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">❤️</div>
+                    <div class="bg-emerald-800 aspect-square rounded-2xl flex items-center justify-center text-5xl hover:scale-110 transition">🌍</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-emerald-950 py-10 text-center text-emerald-600 text-xs tracking-[0.125em]">
+        THE FOREST REWARDS THOSE WHO LOOK DOWN • GATHER TODAY OR STARVE TOMORROW
+    </footer>
+
+    <script>
+        function harvest() {
+            alert("🌱 Basket overflowing! +47 resources added to your abundance field");
+        }
+    </script>
+</body>
+</html>

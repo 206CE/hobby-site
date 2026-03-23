@@ -1,18 +1,17 @@
 // app/page.tsx
 import Link from "next/link";
 
-const categories = [
+const categories = [  {
+    id: "hunt",
+    title: "Hunting",
+    color: "bg-zinc-900",
+    hoverColor: "hover:bg-red-900/40",
+  },
   {
     id: "gather",
     title: "Gathering",
     color: "bg-stone-900",
     hoverColor: "hover:bg-green-900/40",
-  },
-  {
-    id: "hunt",
-    title: "Hunting",
-    color: "bg-zinc-900",
-    hoverColor: "hover:bg-red-900/40",
   },
   {
     id: "adapt",
@@ -35,7 +34,7 @@ export default function CrossroadsPage() {
         <Link
           key={cat.id}
           href={`/${cat.id}`}
-          className={`group relative flex items-center justify-center border-collapse border-[0.5px] border-(--border) ${cat.color} ${cat.hoverColor} transition-all duration-700 ease-in-out`}
+          className={`group relative flex items-center justify-center border-collapse border-[0.5px] border-border ${cat.color} ${cat.hoverColor} transition-all duration-700 ease-in-out`}
         >
           {/* Background Text / Watermark */}
           <span className="absolute text-[10vw] font-black opacity-5 group-hover:opacity-10 transition-opacity uppercase pointer-events-none">

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUNT • The Primal Pursuit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&amp;family=Press+Start+2P&amp;display=swap');
+        .hunt-font { font-family: 'Creepster', cursive; }
+        .crosshair {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #ff0000;
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 20px #ff0000;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        body { background: linear-gradient(180deg, #0a0a0a 0%, #1a0f0f 100%); }
+    </style>
+</head>
+<body class="bg-zinc-950 text-red-200 font-mono overflow-x-hidden">
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 border-b border-red-900 bg-black/80 backdrop-blur-lg">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 border-2 border-red-600 rotate-45"></div>
+                <span class="text-3xl hunt-font tracking-widest text-red-600">HUNT</span>
+            </div>
+            <div class="flex gap-8 text-sm uppercase tracking-widest">
+                <a href="#" class="hover:text-red-600 transition">TRACK</a>
+                <a href="#" class="hover:text-red-600 transition">STALK</a>
+                <a href="#" class="hover:text-red-600 transition">STRIKE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="min-h-screen flex items-center relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,#450a0a_0%,transparent_70%)]"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <div class="mb-8 flex justify-center">
+                <div class="crosshair"></div>
+            </div>
+            <h1 class="text-[14vw] leading-none hunt-font text-red-600 tracking-[-0.07em] drop-shadow-[0_0_40px_#ff0000]">
+                HUNT
+            </h1>
+            <p class="text-4xl text-red-300 mt-4 font-light tracking-widest">PURSUE • CAPTURE • DOMINATE</p>
+            <div class="mt-12">
+                <button onclick="strike()" 
+                        class="px-16 py-6 bg-red-600 hover:bg-red-700 text-white text-2xl font-bold tracking-widest border-4 border-red-900 transition-all active:scale-95">
+                    BEGIN THE CHASE
+                </button>
+            </div>
+        </div>
+        
+        <!-- floating prey icons -->
+        <div class="absolute bottom-20 right-10 text-6xl animate-bounce">🦌</div>
+        <div class="absolute top-40 left-20 text-5xl animate-pulse">🐺</div>
+    </div>
+
+    <!-- EXPANSION -->
+    <div class="max-w-7xl mx-auto px-6 py-24 border-t border-red-900">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-5">
+                <h2 class="text-7xl hunt-font text-red-600 mb-6">THE ANCIENT ART</h2>
+                <div class="prose prose-invert text-xl">
+                    <p>Hunting is not violence — it is <span class="text-red-500 font-bold">focused intention</span>. It is the moment the predator locks eyes with destiny and decides: today I eat, or I starve.</p>
+                    <p>In the concrete jungle we call modern life, the hunt is your career, your relationships, your legacy. You stalk opportunities, track weaknesses in the market, and strike with lethal precision.</p>
+                </div>
+            </div>
+            <div class="md:col-span-7 space-y-12">
+                <div class="flex gap-8 border-l-4 border-red-600 pl-8">
+                    <div class="text-6xl">🎯</div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2">STEALTH MODE</h3>
+                        <p class="text-red-300">Move unseen. Gather intel. Never announce your presence until the arrow flies.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8 border-l-4 border-red-600 pl-8">
+                    <div class="text-6xl">⏳</div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2">PATIENCE KILLS</h3>
+                        <p class="text-red-300">The greatest hunters wait weeks for one perfect moment. Most people quit after one week.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8 border-l-4 border-red-600 pl-8">
+                    <div class="text-6xl">⚔️</div>
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2">THE KILL SHOT</h3>
+                        <p class="text-red-300">When the moment arrives, you do not hesitate. You execute.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-12 text-center text-red-800 text-sm tracking-widest">
+        THE FOREST NEVER FORGETS • YOU ARE EITHER HUNTING OR BEING HUNTED
+    </footer>
+
+    <script>
+        function strike() {
+            const msg = document.createElement('div');
+            msg.innerHTML = `🎯 <span class="text-red-600 font-bold">TARGET ACQUIRED</span>`;
+            msg.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#111; border:4px solid #ff0000; padding:40px 60px; font-size:3rem; z-index:9999; animation:fadeOut 3s forwards;';
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 3000);
+        }
+        // Tailwind script already loaded
+        document.documentElement.style.setProperty('--tw-ring-color', '#991b1b');
+    </script>
+</body>
+</html>

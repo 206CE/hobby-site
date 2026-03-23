@@ -1,0 +1,124 @@
+/* --- VARIABLES & THEMING --- */
+/* We define shared logic first, then swap values based on mode */
+
+:root {
+  /* Default: Day/Light Mode */
+  --bg-primary: #f4efea;
+  --bg-secondary: #e5ddd3;
+  --surface: #ffffff;
+  --border: #d2b48c;
+  --primary: #e12a1b;
+  --secondary: #a1a1a1;
+  --accent-glow: rgba(225, 42, 27, 0.1);
+  
+  /* OKLCH for consistent perceived brightness */
+  --text-100: oklch(0.31 0.14 30);
+  --text-200: oklch(0.46 0.21 30);
+  --text-300: oklch(0.56 0.25 30);
+  --text-400: oklch(0.67 0.27 30);
+
+  /* Animation Speeds */
+  --transition-speed: 0.5s;
+}
+
+/* Dark Mode Overrides */
+[data-mode="dark"] {
+  --bg-primary: #1a1614;
+  --bg-secondary: #0f0b09;
+  --surface: #2a2421;
+  --border: #4e342e;
+  --primary: #b23b29;
+  --accent-glow: rgba(178, 59, 41, 0.3);
+
+  --text-100: oklch(0.93 0.05 30);
+  --text-200: oklch(0.86 0.1 30);
+  --text-300: oklch(0.81 0.14 30);
+  --text-400: oklch(0.73 0.22 30);
+}
+
+/* --- THE BACKGROUND ENGINE --- */
+body[data-theme="hunt"] {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-100);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background var(--transition-speed) ease-in-out;
+  background-attachment: fixed;
+  
+  /* Multi-layered adaptive background */
+  background: 
+    /* Layer 1: The "Vignette" shadow */
+    radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.2) 100%),
+    /* Layer 2: The Adaptive Glow (Blood moon vs Morning sun) */
+    radial-gradient(circle at 15% 25%, var(--accent-glow) 0%, transparent 40%),
+    /* Layer 3: The Base Gradient */
+    linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+/* Texture Overlay (Grain/Primal feel) */
+body[data-theme="hunt"]::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 10;
+  mix-blend-mode: multiply;
+}
+
+/* --- REFINED COMPONENTS --- */
+
+/* Primal Button: Now feels more like heavy gear */
+.btn-primal {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 4px 0px 0px #8a1a12; /* "Heavy" depth effect */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.btn-primal:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 12px var(--accent-glow);
+}
+
+.btn-primal:active {
+  transform: translateY(2px);
+  box-shadow: 0 0px 0px 0px transparent;
+}
+
+/* Hunt Card: High-end "Scope" feel */
+.hunt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hunt-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform: translateX(-100%);
+  transition: 0.6s;
+}
+
+.hunt-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--primary);
+  box-shadow: 0 12px 24px -10px rgba(0,0,0,0.5);
+}
+
+.hunt-card:hover::after {
+  transform: translateX(100%);
+}

@@ -1,96 +1,61 @@
-/* --- ADAPTING Theme (Primal Camouflage / Evolution / Resilience / Mimicry) --- */
+/* /styles/adapt.css */
 
-/* LIGHT MODE (Base Theme) */
-[data-theme='adapt'] {
-  --bg-primary:      #e8e5dc;      /* faded sandstone / dry riverbed */
-  --bg-secondary:    #d9d1c2;      /* weathered limestone / dust veil */
-  --surface:         #f2f0e9;      /* pale shale / bleached bone */
-  --border:          #9a8b72;      /* cracked earth rim / shadow line */
-
-  --text-primary:    #2a2f25;      /* deep slate / hidden shadow */
-  --text-secondary:  #4a5245;      /* muted bark / lichen edge */
-  --text-muted:      #7c8a78;      /* faded camouflage green-gray */
-
-  --accent:          #6b7a68;      /* core adaptive gray-green (chameleon base) */
-  --accent-earth:    #8a7f6e;      /* dry clay / rock dust */
-  --accent-shift:    #5e8c7a;      /* subtle verdant shift / new growth camouflage */
-  --accent-shadow:   #3f4a3e;      /* deep concealment / void mimic */
-  --accent-glint:    #d1c9b5;      /* faint iridescent highlight / light on scale */
-
-  --shadow-hard:     3px 3px 0 #b3a58f;
-  --shadow-soft:     0 8px 24px rgba(107, 122, 104, 0.16);
+[data-theme="adapt"] {
+  /* Day Mode: "Frosted Morning" */
+  --bg-adapt: oklch(0.95 0.02 240); /* Soft icy blue/white */
+  --glass-bg: rgba(255, 255, 255, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --text-main: oklch(0.20 0.05 240);
+  --accent-adapt: oklch(0.60 0.15 250); /* Electric Blue */
+  --blur-amount: 12px;
+  
+  background: radial-gradient(circle at top left, oklch(0.90 0.05 240), var(--bg-adapt));
+  color: var(--text-main);
+  font-family: 'Outfit', 'Inter', sans-serif; /* Soft, rounded fonts */
 }
 
-/* DARK MODE */
-[data-theme='adapt'][data-mode='dark'] {
-  --bg-primary:      #141815;      /* nocturnal undergrowth / moonless rock */
-  --bg-secondary:    #212721;      /* shadowed crevices / adaptive dusk */
-  --surface:         #2e3630;      /* dark slate bark / cooled lava */
-  --border:          #4f5c52;      /* muted camouflage edge */
-
-  --text-primary:    #e3e8e0;      /* pale ghost on stone / moonlight reveal */
-  --text-secondary:  #c5d0c2;      /* silvered lichen */
-  --text-muted:      #98a899;      /* faded night camouflage */
-
-  --accent:          #7a8a7e;      /* muted nocturnal green-gray */
-  --accent-earth:    #9a9385;      
-  --accent-shift:    #70967f;      /* subtle glow-shift / adaptive highlight */
-  --accent-shadow:   #2f3a32;      
-  --accent-glint:    #e0d9c5;      
-
-  --shadow-hard:     4px 4px 0 #0e110d;
-  --shadow-soft:     0 6px 20px rgba(0,0,0,0.68);
+/* Night Mode: "Deep Nebula" */
+[data-theme="adapt"][data-mode="dark"] {
+  --bg-adapt: oklch(0.15 0.05 250); /* Deep Space Blue */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: oklch(0.95 0.02 240);
+  --accent-adapt: oklch(0.80 0.12 190); /* Cyan Glow */
+  
+  background: radial-gradient(all, oklch(0.20 0.08 260), oklch(0.10 0.02 250));
 }
 
-/* ── Theme-specific classes ── */
-[data-theme='adapt'] {
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-  }
+/* Glassmorphic Components */
+[data-theme="adapt"] .hunt-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px; /* Very rounded for organic feel */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
-  .heading {
-    @apply text-shadow-(--shadow-hard) text-(--accent-earth) text-6xl md:text-9xl font-black tracking-tighter uppercase mb-6;
-    /* Subtle shifting gradient — mimic color change / evolution */
-    background: linear-gradient(90deg, #f0f2ed, #d8e0d5, #e8ece3, #d8e0d5, #f0f2ed);
-    background-size: 200% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* Optional slow animation for "adapting" feel — uncomment if desired */
-    /* animation: subtle-shift 12s linear infinite; */
-  }
+[data-theme="adapt"] .hunt-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+  border-color: var(--accent-adapt);
+  box-shadow: 0 0 20px var(--accent-adapt);
+}
 
-  /* @keyframes subtle-shift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  } */
+[data-theme="adapt"] .btn-primal {
+  background: var(--accent-adapt);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
 
-  .card {
-    background-color: var(--surface);
-    border: 2px solid var(--border);
-    @apply p-6;
-    border-radius: 8px 14px 8px 14px;   /* irregular, shifting / organic edges */
-    box-shadow: var(--shadow-soft);
-    transition: all 0.3s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-6px) scale(1.015) rotate(0.4deg);  /* subtle morph / adapt feel */
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
-    border-color: var(--accent-shift);
-  }
-
-  .btn-primal {
-    background: linear-gradient(135deg, var(--accent-shift), var(--accent-earth));
-    color: var(--accent-glint);
-    @apply py-3 px-7 font-bold border-none rounded-[4px] transition-all duration-200;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-  }
-
-  .btn-primal:hover {
-    background: linear-gradient(135deg, var(--accent-earth), var(--accent-shift));
-    transform: scale(1.05) translateY(-3px);
-    box-shadow: 0 0 20px rgba(94, 140, 122, 0.3);  /* faint adaptive glint */
-  }
+[data-theme="adapt"] .btn-primal:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 25px var(--accent-adapt);
+  letter-spacing: 0.1em;
 }

@@ -50,9 +50,7 @@
 
 @layer base {
   body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    @apply antialiased transition-colors duration-300 bg-background text-foreground;
+
   }
   html { scroll-behavior: smooth;
     @apply font-sans; }
@@ -83,22 +81,9 @@
 /* REMAINING STYLES (NO CHANGES NEEDED)             */
 /* ──────────────────────────────────────────────── */
 
-main {
-  position: relative;
-  background: radial-gradient(
-    circle at 60% 50%,
-    rgba(30, 30, 35, 0.2) 0%,
-    var(--bg-primary) 70%
-  );
-}
 
-h2 {
-  color: var(--accent);
-  font-family: "Georgia", "Times New Roman", serif;
-  font-weight: 900;
-  letter-spacing: -0.025em;
-  transition: all 0.4s ease; /* Smooth color swap */
-}
+
+
 
 p.uppercase {
   color: var(--text-muted, #666);

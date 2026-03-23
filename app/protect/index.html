@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTECT • The Iron Veil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&amp;display=swap');
+        .protect-font { font-family: 'Anton', sans-serif; }
+        .shield {
+            filter: drop-shadow(0 0 30px #22d3ee);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-cyan-100">
+    <nav class="fixed top-0 w-full bg-slate-900 border-b-4 border-cyan-400 z-50">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="text-5xl">🛡️</span>
+                <span class="protect-font text-5xl tracking-widest text-cyan-400">PROTECT</span>
+            </div>
+            <div class="uppercase text-xs tracking-[4px] border border-cyan-400 px-8 py-3">DEFEND WHAT YOU BUILT</div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="min-h-screen flex items-center justify-center relative">
+        <div class="text-center">
+            <div class="shield mx-auto mb-12 w-64 h-64 border-[16px] border-cyan-400 rounded-full flex items-center justify-center text-8xl animate-[spin_20s_linear_infinite]">
+                🛡️
+            </div>
+            <h1 class="protect-font text-[15vw] leading-[0.8] tracking-[-0.1em] text-cyan-300">PROTECT</h1>
+            <p class="mt-4 text-4xl text-slate-400">YOUR PEACE • YOUR LEGACY • YOUR TRIBE</p>
+        </div>
+    </div>
+
+    <!-- EXPANSION -->
+    <div class="max-w-4xl mx-auto px-6 py-20">
+        <div class="border-4 border-cyan-500 bg-slate-900 p-16 rounded-3xl">
+            <h2 class="protect-font text-6xl text-center mb-12">THE WALL DOES NOT ASK FOR PERMISSION</h2>
+            
+            <div class="space-y-16">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="flex-1">
+                        <div class="text-6xl mb-4">🔒</div>
+                        <h3 class="text-4xl font-bold">BOUNDARIES</h3>
+                        <p class="mt-6 text-lg">The strongest shield is the word “No” spoken without apology.</p>
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-6xl mb-4">🧠</div>
+                        <h3 class="text-4xl font-bold">MENTAL ARMOR</h3>
+                        <p class="mt-6 text-lg">Protect your attention like it is the last drop of water on a dying planet.</p>
+                    </div>
+                </div>
+                
+                <div class="h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+                
+                <div class="text-center">
+                    <button onclick="raiseShield()" 
+                            class="protect-font text-3xl px-20 py-6 bg-cyan-400 text-slate-950 hover:bg-white transition-all rounded-none border-8 border-cyan-600">
+                        RAISE THE SHIELD
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black py-8 text-center text-cyan-800 text-sm">
+        THEY CANNOT TAKE WHAT YOU REFUSE TO SURRENDER
+    </footer>
+
+    <script>
+        function raiseShield() {
+            const shield = document.createElement('div');
+            shield.textContent = '🛡️';
+            shield.style.cssText = `
+                position: fixed; 
+                font-size: 12rem; 
+                top: 50%; left: 50%; 
+                transform: translate(-50%, -50%) scale(0.2); 
+                transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                z-index: 99999;
+                color: #67e8f9;
+                text-shadow: 0 0 80px #22d3ee;
+            `;
+            document.body.appendChild(shield);
+            
+            setTimeout(() => {
+                shield.style.transform = 'translate(-50%, -50%) scale(2.8)';
+                shield.style.opacity = '0';
+            }, 50);
+            
+            setTimeout(() => shield.remove(), 1800);
+        }
+    </script>
+</body>
+</html>

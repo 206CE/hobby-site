@@ -1,89 +1,64 @@
-/* --- PROTECTING Theme (Primal Guardian / Fortress / Defender / Unyielding Shield) --- */
+/* /styles/protect.css */
 
-/* LIGHT MODE (Base Theme) */
-[data-theme='protect'] {
-  --bg-primary:      #f2ede5;      /* sun-bleached stone / old parchment wall */
-  --bg-secondary:    #e0d6c5;      /* weathered sandstone / fortified clay */
-  --surface:         #fdfaf4;      /* pale limestone / shield face */
-  --border:          #8a6f4f;      /* rusted iron / ancient bronze edge */
-
-  --text-primary:    #1f1a14;      /* deep charcoal / shadowed guardian */
-  --text-secondary:  #3f3326;      /* dark oak / forge soot */
-  --text-muted:      #756854;      /* aged bronze / muted earth */
-
-  --accent:          #a6784a;      /* core guardian bronze / hearth glow */
-  --accent-earth:    #8a5f3a;      /* deep territorial clay */
-  --accent-shield:   #c89f5e;      /* warm metallic shield highlight */
-  --accent-blood:    #6b2e1e;      /* subtle defended life / crimson oath */
-  --accent-stone:    #d9c7a8;      /* pale stone / unyielding highlight */
-
-  --shadow-hard:     4px 4px 0 #b89e7a;
-  --shadow-soft:     0 10px 28px rgba(138, 111, 79, 0.20);
+[data-theme="protect"] {
+  /* Day Mode: "Amber Alert" (Classic Retro PC) */
+  --bg-protect: #2b2200;           /* Dark Brown/Amber base */
+  --text-main: #ffb000;            /* Classic Amber CRT color */
+  --accent-protect: #ffcc00;
+  --border-color: #ffb000;
+  --font-mono: 'Courier Prime', 'Fira Code', monospace;
+  
+  background-color: var(--bg-protect);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  text-shadow: 0 0 5px rgba(255, 176, 0, 0.5);
+  line-height: 1.2;
 }
 
-/* DARK MODE */
-[data-theme='protect'][data-mode='dark'] {
-  --bg-primary:      #16120d;      /* midnight fortress stone / deep cavern guard */
-  --bg-secondary:    #241e18;      /* shadowed rampart / cooled forge */
-  --surface:         #332c24;      /* dark granite / battle-worn shield */
-  --border:          #5f4a36;      /* muted bronze rim / iron patina */
-
-  --text-primary:    #f0e8d8;      /* pale torchlight on stone */
-  --text-secondary:  #d2c0a8;      /* warm ember glow */
-  --text-muted:      #a89b7f;      /* faded sentinel gray-brown */
-
-  --accent:          #b88a58;      /* glowing bronze in low light */
-  --accent-earth:    #9a6f44;      
-  --accent-shield:   #d4b37c;      /* metallic guardian glint */
-  --accent-blood:    #8b3a28;      
-  --accent-stone:    #e8d9c0;      
-
-  --shadow-hard:     5px 5px 0 #0f0b07;
-  --shadow-soft:     0 8px 24px rgba(0,0,0,0.70);
+/* Night Mode: "Ghost Green" (Matrix/Radar style) */
+[data-theme="protect"][data-mode="dark"] {
+  --bg-protect: #050a05;           /* Deep Black-Green */
+  --text-main: #00ff41;            /* Matrix Green */
+  --accent-protect: #008f11;
+  --border-color: #00ff41;
+  
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
 }
 
-/* ── Theme-specific classes ── */
-[data-theme='protect'] {
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-  }
+/* Terminal Components */
+[data-theme="protect"] .hunt-card {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  position: relative;
+  border-radius: 0;
+}
 
-  .heading {
-    @apply text-shadow-(--shadow-hard) text-(--accent-earth) text-6xl md:text-9xl font-black tracking-tighter uppercase mb-6;
-    /* Solid, enduring gradient — forged metal / stone strength */
-    background: linear-gradient(to bottom, var(--accent-shield), var(--accent-earth), var(--accent-shield));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+/* The "Scanline" effect overlay */
+[data-theme="protect"] .hunt-card::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+}
 
-  .card {
-    background-color: var(--surface);
-    border: 3px solid var(--border);  /* Slightly thicker for fortress feel */
-    @apply p-6;
-    border-radius: 4px 10px 4px 10px;   /* Blocky, shield-like asymmetry */
-    box-shadow: var(--shadow-soft);
-    transition: all 0.25s ease;
-  }
+[data-theme="protect"] .btn-primal {
+  background: var(--text-main);
+  color: var(--bg-protect);
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 
-  .card:hover {
-    transform: translateY(-3px) scale(1.01);  /* Minimal lift — immovable but vigilant */
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
-    border-color: var(--accent-shield);
-  }
-
-  .btn-primal {
-    background: linear-gradient(135deg, var(--accent-shield), var(--accent-earth));
-    color: var(--accent-stone);
-    @apply py-3 px-7 font-bold border-none rounded-[4px] transition-all duration-200;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-    border: 1px solid var(--accent-blood);  /* Subtle defensive rim */
-  }
-
-  .btn-primal:hover {
-    background: linear-gradient(135deg, var(--accent-earth), var(--accent-shield));
-    transform: scale(1.03);
-    box-shadow: 0 0 24px rgba(200, 159, 94, 0.35);  /* Warm shield glow */
-  }
+[data-theme="protect"] .btn-primal:hover {
+  background: var(--bg-protect);
+  color: var(--text-main);
+  outline: 2px solid var(--text-main);
 }
